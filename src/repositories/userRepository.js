@@ -1,17 +1,17 @@
-const User = require("../models/User");
+const User = require('../models/user');
 
-class userRepository {
-  async createUser(model) {
-    return await User.create(model);
-  }
+class UserRepository {
+    async createUser(user){
+        return await User.create(user);
+    }
 
-  async findByUserName(username) {
-    return await User.find({ where: { username } });
-  }
+    async findByUserName(username){
+        return await User.findOne({ where: { username }})
+    }
 
-  async findAll() {
-    return await User.findAll();
-  }
+    async findAll(){
+        return await User.findAll();
+    }
 }
 
-module.exports = new userRepository();
+module.exports = new UserRepository();

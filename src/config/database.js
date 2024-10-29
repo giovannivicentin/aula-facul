@@ -1,13 +1,17 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "database",
+    dialect: 'sqlite',
+    storage: 'dom.sqlite'
 });
 
-sequelize.authenticate().then(() => {
-  console.log("Conexão efetuada no db com suvecesso");
-  return sequelize.sync();
-});
+sequelize.authenticate() 
+    .then(() => {
+        console.log('Conexão feita com sucesso.');
+        return sequelize.sync();
+    })
+    .catch(err => {
+        console.error('Não foi possivel se conectar', err);
+    })
 
 module.exports = sequelize;
